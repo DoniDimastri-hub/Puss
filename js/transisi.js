@@ -117,43 +117,6 @@ var PageTransitions = (function () {
                     });
                 break;
             case 3:
-                outClass = 'halaman-rotateFoldLeft';
-                inClass = 'halaman-moveFromRightFade';
-                var textWrapper = document.querySelector('.ml11 .letters');
-                textWrapper.innerHTML = textWrapper.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>");
-
-                anime.timeline({
-                        loop: false
-                    })
-                    .add({
-                        targets: '.ml11 .line',
-                        scaleY: [0, 1],
-                        opacity: [0.5, 1],
-                        easing: "easeOutExpo",
-                        duration: 1000
-                    })
-                    .add({
-                        targets: '.ml11 .line',
-                        translateX: [0, document.querySelector('.ml11 .letters').getBoundingClientRect().width + 10],
-                        easing: "easeOutExpo",
-                        duration: 1000,
-                        delay: 1200
-                    }).add({
-                        targets: '.ml11 .letter',
-                        opacity: [0, 1],
-                        easing: "easeOutExpo",
-                        duration: 600,
-                        offset: '-=775',
-                        delay: (el, i) => 34 * (i + 1)
-                    }).add({
-                        targets: '.ml11',
-                        opacity: 1,
-                        duration: 1000,
-                        easing: "easeOutExpo",
-                        delay: 1000
-                    });
-                break;
-            case 4:
                 outClass = 'halaman-rotateFoldBottom';
                 inClass = 'halaman-moveFromTopFade';
                 var textWrapper = document.querySelector('.ml9 .letters');
@@ -176,35 +139,16 @@ var PageTransitions = (function () {
                         delay: 1400
                     });
                 break;
-            case 5:
-                outClass = 'halaman-rotateRoomLeftOut halaman-ontop';
-                inClass = 'halaman-rotateRoomLeftIn';
-                var textWrapper = document.querySelector('.ml2');
-                textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
-                anime.timeline({
-                        loop: false
-                    })
-                    .add({
-                        targets: '.ml2 .letter',
-                        scale: [4, 1],
-                        opacity: [0, 1],
-                        translateZ: 0,
-                        easing: "easeOutExpo",
-                        duration: 1200,
-                        delay: (el, i) => 70 * i
-                    });
-                break;
-            case 6:
+            case 4:
                 outClass = 'halaman-rotateRoomTopOut halaman-ontop';
                 inClass = 'halaman-rotateRoomTopIn';
                 var ml4 = {};
                 ml4.opacityIn = [0, 1];
                 ml4.scaleIn = [0.2, 1];
                 ml4.scaleOut = 3;
-                ml4.durationIn = 700;
+                ml4.durationIn = 500;
                 ml4.durationOut = 500;
-                ml4.delay = 1100;
+                ml4.delay = 500;
 
                 anime.timeline({
                         loop: false
@@ -240,6 +184,30 @@ var PageTransitions = (function () {
                         duration: ml4.durationIn
                     }).add({
                         targets: '.ml4 .letters-3',
+                        opacity: 0,
+                        scale: ml4.scaleOut,
+                        duration: ml4.durationOut,
+                        easing: "easeInExpo",
+                        delay: ml4.delay
+     		    }).add({
+                        targets: '.ml4 .letters-4',
+                        opacity: ml4.opacityIn,
+                        scale: ml4.scaleIn,
+                        duration: ml4.durationIn
+                    }).add({
+                        targets: '.ml4 .letters-4',
+                        opacity: 0,
+                        scale: ml4.scaleOut,
+                        duration: ml4.durationOut,
+                        easing: "easeInExpo",
+                        delay: ml4.delay
+		    }).add({
+                        targets: '.ml4 .letters-5',
+                        opacity: ml4.opacityIn,
+                        scale: ml4.scaleIn,
+                        duration: ml4.durationIn
+                    }).add({
+                        targets: '.ml4 .letters-5',
                         opacity: 0,
                         scale: ml4.scaleOut,
                         duration: ml4.durationOut,
@@ -252,32 +220,7 @@ var PageTransitions = (function () {
                         delay: 500
                     });
                 break;
-            case 7:
-                outClass = 'halaman-rotateRoomRightOut halaman-ontop';
-                inClass = 'halaman-rotateRoomRightIn';
-                var textWrapper = document.querySelector('.ml12');
-                textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
-                anime.timeline({
-                        loop: false
-                    })
-                    .add({
-                        targets: '.ml12 .letter',
-                        translateX: [40, 0],
-                        translateZ: 0,
-                        opacity: [0, 1],
-                        easing: "easeOutExpo",
-                        duration: 1200,
-                        delay: (el, i) => 500 + 30 * i
-                    }).add({
-                        targets: '.ml12 .letter',
-                        opacity: [1, 1],
-                        easing: "easeInExpo",
-                        duration: 1100,
-                        delay: (el, i) => 100 + 30 * i
-                    });
-                break;
-            case 8:
+            case 5:
                 outClass = 'halaman-rotateRoomBottomOut halaman-ontop';
                 inClass = 'halaman-rotateRoomBottomIn';
                 var textWrapper = document.querySelector('.ml14 .letters');
@@ -310,7 +253,7 @@ var PageTransitions = (function () {
                         delay: 1000
                     });
                 break;
-            case 9:
+            case 6:
                 outClass = 'halaman-rotateCarouselBottomOut halaman-ontop';
                 inClass = 'halaman-rotateCarouselBottomIn';
                 var textWrapper = document.querySelector('.ml7 .letters');
@@ -336,14 +279,9 @@ var PageTransitions = (function () {
                         delay: 1000
                     });
                 break;
-            case 10:
+            case 7:
                 outClass = 'halaman-rotateCarouselTopOut halaman-ontop';
                 inClass = 'halaman-rotateCarouselTopIn';
-                $("#gambar").fadeIn(3000);
-
-                var textWrapper = document.querySelector('.ml13');
-                textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
                 anime.timeline({
                         loop: false
                     })
